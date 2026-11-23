@@ -1,0 +1,231 @@
+.container {
+  width: min(calc(100% - 2rem), var(--content-width));
+  margin-inline: auto;
+}
+
+.narrow {
+  max-width: var(--reading-width);
+}
+
+.section {
+  padding-block: var(--space-section);
+  border-top: 1px solid var(--color-border);
+}
+
+.section-muted {
+  background: var(--color-surface);
+}
+
+.site-header {
+  position: sticky;
+  z-index: 20;
+  top: 0;
+  border-bottom: 1px solid var(--color-border);
+  background: rgb(8 8 8 / 96%);
+}
+
+.site-nav {
+  display: flex;
+  min-height: 4.25rem;
+  align-items: center;
+  justify-content: space-between;
+  gap: var(--space-4);
+}
+
+.nav-links {
+  position: absolute;
+  top: 100%;
+  right: 0;
+  left: 0;
+  display: none;
+  margin: 0;
+  padding: var(--space-4) 1rem;
+  border-bottom: 1px solid var(--color-border);
+  background: var(--color-background);
+  list-style: none;
+}
+
+.nav-links.is-open {
+  display: grid;
+  gap: var(--space-2);
+}
+
+.hero {
+  position: relative;
+  isolation: isolate;
+  min-height: calc(100vh - 4.25rem);
+  display: flex;
+  align-items: center;
+  padding-block: clamp(4rem, 8vw, 7rem);
+}
+
+.hero::before {
+  position: absolute;
+  z-index: 0;
+  inset: 0;
+  background:
+    radial-gradient(ellipse at 75% 45%, rgb(245 165 36 / 7%), transparent 58%),
+    repeating-radial-gradient(ellipse at 72% 145%, transparent 0 22px, rgb(255 255 255 / 4%) 23px 24px, transparent 25px 36px);
+  content: "";
+  opacity: 0.55;
+  pointer-events: none;
+}
+
+.hero-layout,
+.contact-layout {
+  display: grid;
+  gap: var(--space-7);
+}
+
+.hero-layout {
+  position: relative;
+  z-index: 1;
+}
+
+.hero-copy {
+  max-width: 46rem;
+}
+
+.hero-copy h1 {
+  max-width: 7ch;
+  margin-bottom: var(--space-5);
+  font-size: clamp(3.25rem, 8vw, 7.25rem);
+  letter-spacing: -0.07em;
+  line-height: 0.92;
+  text-transform: uppercase;
+}
+
+.hero-profile {
+  width: min(100%, 28rem);
+  justify-self: center;
+  overflow: hidden;
+  border: 1px solid var(--color-border);
+  background: var(--color-background);
+}
+
+.profile-image-stage {
+  display: grid;
+  width: 100%;
+  aspect-ratio: 4 / 5;
+  place-items: end center;
+  perspective: 900px;
+}
+
+.profile-photo {
+  width: 100%;
+  height: 100%;
+  border: 0;
+  object-fit: cover;
+  object-position: center;
+  transform-style: preserve-3d;
+  transition: transform 120ms ease-out;
+  will-change: transform;
+}
+
+.section-heading {
+  max-width: var(--reading-width);
+  margin-bottom: var(--space-6);
+}
+
+.service-grid,
+.skills-grid,
+.project-grid,
+.education-list,
+.facts-list {
+  display: grid;
+  gap: var(--space-4);
+}
+
+.project-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 18rem), 1fr));
+}
+
+.service-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 15rem), 1fr));
+}
+
+.research-grid {
+  display: grid;
+  gap: var(--space-5);
+}
+
+.skills-grid {
+  grid-template-columns: repeat(auto-fit, minmax(min(100%, 14rem), 1fr));
+}
+
+.timeline {
+  margin: 0;
+  padding: 0;
+  list-style: none;
+  border-top: 1px solid var(--color-border);
+}
+
+.contact-layout {
+  align-items: start;
+}
+
+.site-footer {
+  border-top: 1px solid var(--color-border);
+  padding-block: 0 var(--space-6);
+}
+
+.footer-layout {
+  display: grid;
+  grid-template-columns: minmax(0, 1fr) minmax(0, 2fr) minmax(0, 1fr);
+  align-items: center;
+  gap: var(--space-3);
+  padding-block: clamp(3rem, 8vw, 6rem) var(--space-4);
+}
+
+@media (min-width: 44rem) {
+  .education-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .facts-list {
+    grid-template-columns: repeat(3, minmax(0, 1fr));
+  }
+
+  .research-grid {
+    grid-template-columns: repeat(2, minmax(0, 1fr));
+  }
+}
+
+@media (max-width: 55rem) {
+  .footer-layout {
+    grid-template-columns: 1fr;
+  }
+}
+
+@media (min-width: 48rem) {
+  .menu-toggle {
+    display: none;
+  }
+
+  .nav-links {
+    position: static;
+    display: flex;
+    align-items: center;
+    gap: var(--space-5);
+    padding: 0;
+    border: 0;
+    background: transparent;
+  }
+}
+
+@media (min-width: 48rem) {
+  .hero-layout {
+    grid-template-columns: minmax(0, 1.25fr) minmax(18rem, 0.75fr);
+    align-items: center;
+  }
+
+  .hero-profile {
+    justify-self: end;
+  }
+}
+
+@media (min-width: 60rem) {
+  .contact-layout {
+    grid-template-columns: minmax(0, 0.9fr) minmax(0, 1.1fr);
+  }
+}
